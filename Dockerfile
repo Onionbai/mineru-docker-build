@@ -31,18 +31,16 @@ RUN ln -fsn /usr/share/zoneinfo/Asia/Shanghai /etc/localtime  && \
 # Create a virtual environment for MinerU
 RUN python3 -m venv /opt/mineru_venv
 
+RUN /bin/bash -c "source /opt/mineru_venv/bin/activate && \
+    wget https://github.com/Onionbai/mineru-docker-build/raw/main/server.py -O server.py && \
+    pip3 install --upgrade pip && \
+    wget https://github.com/Onionbai/mineru-docker-build/raw/main/server_requirements.txt -O server_requirements.txt && \
+    pip3 install -r server_requirements.txt"
+
 # Activate the virtual environment and install necessary Python packages
 RUN /bin/bash -c "source /opt/mineru_venv/bin/activate && \
-    pip3 install --upgrade pip && \
-    wget https://github.com/Onionbai/MinerU/raw/master/docker/global/requirements.txt -O requirements.txt && \
-    pip3 install -r requirements.txt --extra-index-url https://wheels.myhloli.com && \
-    pip3 install paddlepaddle-gpu==3.0.0rc1 -i https://www.paddlepaddle.org.cn/packages/stable/cu118/"
-
-RUN /bin/bash -c "source /opt/mineru_venv/bin/activate && \
-    wget https://github.com/Onionbai/MinerU/raw/master/projects/multi_gpu/server.py -O server.py && \
-    pip3 install --upgrade pip && \
-    wget https://github.com/Onionbai/MinerU/raw/master/docker/global/server_requirements.txt -O server_requirements.txt && \
-    pip3 install -r server_requirements.txt --extra-index-url https://wheels.myhloli.com"
+    wget https://github.com/opendatalab/MinerU/raw/master/docker/global/requirements.txt -O requirements.txt && \
+    pip3 install -r requirements.txt"
 
 # Copy the configuration file template and install magic-pdf latest
 RUN /bin/bash -c "wget https://github.com/opendatalab/MinerU/raw/master/magic-pdf.template.json && \
