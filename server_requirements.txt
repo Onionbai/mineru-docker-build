@@ -1,0 +1,4 @@
+filetype==1.2.0
+python-multipart==0.0.20
+fastapi==0.115.8
+litserve==0.2.6
