@@ -19,6 +19,17 @@ RUN apt-get update && \
         git \
         tzdata \
         libgl1 \
+        libreoffice \
+        fonts-noto-cjk \
+        fonts-wqy-zenhei \
+        fonts-wqy-microhei \
+        ttf-mscorefonts-installer \
+        fontconfig \
+        libglib2.0-0 \
+        libxrender1 \
+        libsm6 \
+        libxext6 \
+        poppler-utils \
         libglib2.0-0 \
         && rm -rf /var/lib/apt/lists/*
 
