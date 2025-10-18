@@ -14,6 +14,7 @@ RUN apt-get update && \
         fontconfig \
         libgl1 && \
     fc-cache -fv && \
+    wget https://github.com/Onionbai/mineru-docker-build/raw/main/server.py -O server.py && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
