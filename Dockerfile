@@ -20,7 +20,7 @@ RUN apt-get update && \
 
 # Install mineru latest
 RUN python3 -m pip install -U 'mineru[core]' --break-system-packages && \
-    python3 -m pip install -U litserve
+    python3 -m pip install -U litserve && \
     python3 -m pip cache purge
 
 # Download models and update the configuration file
